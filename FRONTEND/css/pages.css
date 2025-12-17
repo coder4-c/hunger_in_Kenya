@@ -4,7 +4,7 @@
 .page-header {
     background: linear-gradient(135deg, var(--kenya-black) 0%, var(--kenya-red) 50%, var(--kenya-green) 100%);
     color: var(--kenya-white);
-    padding: 120px 0 80px;
+    padding: 140px 0 100px;
     position: relative;
     overflow: hidden;
 }
@@ -16,7 +16,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
 
@@ -26,9 +26,10 @@
 }
 
 .breadcrumb {
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
     opacity: 0.9;
+    font-weight: 500;
 }
 
 .breadcrumb a {
@@ -39,29 +40,35 @@
 
 .breadcrumb a:hover {
     color: var(--kenya-red);
+    text-decoration: underline;
 }
 
 .separator {
-    margin: 0 0.5rem;
+    margin: 0 0.75rem;
     opacity: 0.7;
 }
 
 .page-header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
     color: var(--kenya-white);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
 }
 
 .page-header p {
-    font-size: 1.25rem;
-    max-width: 600px;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    max-width: 700px;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
+    font-weight: 400;
 }
 
 /* ===== CRISIS OVERVIEW ===== */
 .crisis-overview {
-    padding: var(--section-padding);
-    background: var(--kenya-white);
+    padding: 5rem 0;
+    background: var(--gray-50);
 }
 
 .overview-grid {
@@ -72,32 +79,55 @@
 }
 
 .overview-text h2 {
-    color: var(--kenya-black);
-    margin-bottom: 1.5rem;
+    color: var(--gray-900);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
 }
 
 .lead {
     font-size: 1.25rem;
     line-height: 1.7;
     color: var(--gray-700);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    font-weight: 400;
 }
 
 .overview-stats {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .stat-highlight {
-    background: var(--gray-50);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
+    background: var(--kenya-white);
+    padding: 2rem;
+    border-radius: 16px;
     border-left: 4px solid var(--kenya-red);
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-normal);
+}
+
+.stat-highlight:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
 }
 
 .stat-number {
     display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--kenya-red);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.stat-label {
+    color: var(--gray-600);
+    font-size: 1rem;
+    font-weight: 500;
+}
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--kenya-red);
@@ -172,7 +202,7 @@
 
 /* ===== ROOT CAUSES ===== */
 .root-causes {
-    padding: var(--section-padding);
+    padding: 5rem 0;
     background: var(--gray-50);
 }
 
@@ -184,57 +214,73 @@
 
 .cause-card {
     background: var(--kenya-white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
-    transition: var(--transition-normal);
-    border-top: 4px solid var(--kenya-green);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--gray-100);
+    position: relative;
+    overflow: hidden;
+}
+
+.cause-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--kenya-green), var(--kenya-red));
 }
 
 .cause-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-    border-top-color: var(--kenya-red);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
 }
 
 .cause-icon {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     background: linear-gradient(135deg, var(--kenya-green), var(--kenya-green-light));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--kenya-white);
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-soft);
 }
 
 .cause-card h3 {
-    color: var(--kenya-black);
-    margin-bottom: 1rem;
+    color: var(--gray-900);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .cause-card p {
     color: var(--gray-600);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
 }
 
 .cause-impact {
     background: var(--gray-50);
-    padding: 1rem;
-    border-radius: var(--border-radius-sm);
-    border-left: 3px solid var(--kenya-red);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--kenya-red);
 }
 
 .cause-impact strong {
-    color: var(--kenya-black);
+    color: var(--gray-900);
+    font-weight: 600;
 }
 
 /* ===== AFFECTED REGIONS ===== */
 .affected-regions {
-    padding: var(--section-padding);
+    padding: 5rem 0;
     background: var(--kenya-white);
 }
 
@@ -246,32 +292,41 @@
 
 .region-card {
     background: var(--kenya-white);
-    border-radius: var(--border-radius);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition-normal);
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--gray-100);
 }
 
 .region-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
 }
 
 .region-header {
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: linear-gradient(135deg, var(--kenya-black), var(--kenya-red));
 }
 
 .region-header h3 {
     color: var(--kenya-white);
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .severity-badge {
-    padding: 0.25rem 0.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
