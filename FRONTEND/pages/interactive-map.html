@@ -668,15 +668,27 @@
                 popupDiv.appendChild(popupTitle);
                 
                 const programP = document.createElement('p');
-                programP.innerHTML = `<strong>Program:</strong> ${location.description}`;
+                const programStrong = document.createElement('strong');
+                programStrong.textContent = 'Program: ';
+                programP.appendChild(programStrong);
+                programP.appendChild(document.createTextNode(location.description));
                 popupDiv.appendChild(programP);
                 
                 const peopleP = document.createElement('p');
-                peopleP.innerHTML = `<strong>People Served:</strong> ${location.peopleServed.toLocaleString()}`;
+                const peopleStrong = document.createElement('strong');
+                peopleStrong.textContent = 'People Served: ';
+                peopleP.appendChild(peopleStrong);
+                peopleP.appendChild(document.createTextNode(location.peopleServed.toLocaleString()));
                 popupDiv.appendChild(peopleP);
                 
                 const statusP = document.createElement('p');
-                statusP.innerHTML = `<strong>Status:</strong> <span style="color: ${statusColors[location.status]}">${location.status.charAt(0).toUpperCase() + location.status.slice(1)}</span>`;
+                const statusStrong = document.createElement('strong');
+                statusStrong.textContent = 'Status: ';
+                statusP.appendChild(statusStrong);
+                const statusSpan = document.createElement('span');
+                statusSpan.style.color = statusColors[location.status];
+                statusSpan.textContent = location.status.charAt(0).toUpperCase() + location.status.slice(1);
+                statusP.appendChild(statusSpan);
                 popupDiv.appendChild(statusP);
                 
                 marker.bindPopup(popupDiv);
@@ -729,10 +741,16 @@
             impactTitle.textContent = 'Impact';
             impactSection.appendChild(impactTitle);
             const peopleServed = document.createElement('p');
-            peopleServed.innerHTML = `<strong>People Served:</strong> ${location.peopleServed.toLocaleString()}`;
+            const peopleStrong = document.createElement('strong');
+            peopleStrong.textContent = 'People Served: ';
+            peopleServed.appendChild(peopleStrong);
+            peopleServed.appendChild(document.createTextNode(location.peopleServed.toLocaleString()));
             impactSection.appendChild(peopleServed);
             const status = document.createElement('p');
-            status.innerHTML = `<strong>Status:</strong> ${location.status.charAt(0).toUpperCase() + location.status.slice(1)}`;
+            const statusStrong = document.createElement('strong');
+            statusStrong.textContent = 'Status: ';
+            status.appendChild(statusStrong);
+            status.appendChild(document.createTextNode(location.status.charAt(0).toUpperCase() + location.status.slice(1)));
             impactSection.appendChild(status);
             countyInfo.appendChild(impactSection);
             
