@@ -15,5 +15,8 @@
     "static-site"
   ],
   "author": "Hunger in Kenya Initiative",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
 }
