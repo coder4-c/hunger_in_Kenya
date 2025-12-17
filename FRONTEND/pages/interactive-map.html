@@ -659,17 +659,27 @@
                 
                 const marker = L.marker([location.lat, location.lng], { icon: icon }).addTo(map);
                 
-                // Create popup content
-                const popupContent = `
-                    <div class="map-popup">
-                        <h4>${location.name}</h4>
-                        <p><strong>Program:</strong> ${location.description}</p>
-                        <p><strong>People Served:</strong> ${location.peopleServed.toLocaleString()}</p>
-                        <p><strong>Status:</strong> <span style="color: ${statusColors[location.status]}">${location.status.charAt(0).toUpperCase() + location.status.slice(1)}</span></p>
-                    </div>
-                `;
+                // Create popup content safely
+                const popupDiv = document.createElement('div');
+                popupDiv.className = 'map-popup';
                 
-                marker.bindPopup(popupContent);
+                const popupTitle = document.createElement('h4');
+                popupTitle.textContent = location.name;
+                popupDiv.appendChild(popupTitle);
+                
+                const programP = document.createElement('p');
+                programP.innerHTML = `<strong>Program:</strong> ${location.description}`;
+                popupDiv.appendChild(programP);
+                
+                const peopleP = document.createElement('p');
+                peopleP.innerHTML = `<strong>People Served:</strong> ${location.peopleServed.toLocaleString()}`;
+                popupDiv.appendChild(peopleP);
+                
+                const statusP = document.createElement('p');
+                statusP.innerHTML = `<strong>Status:</strong> <span style="color: ${statusColors[location.status]}">${location.status.charAt(0).toUpperCase() + location.status.slice(1)}</span>`;
+                popupDiv.appendChild(statusP);
+                
+                marker.bindPopup(popupDiv);
                 
                 // Add click event to update sidebar
                 marker.on('click', function() {
@@ -694,22 +704,47 @@
         
         function updateCountyInfo(location) {
             const countyInfo = document.getElementById('county-info');
-            countyInfo.innerHTML = `
-                <h3>${location.name}</h3>
-                <div class="info-section">
-                    <h4>Program Details</h4>
-                    <p>${location.description}</p>
-                </div>
-                <div class="info-section">
-                    <h4>Impact</h4>
-                    <p><strong>People Served:</strong> ${location.peopleServed.toLocaleString()}</p>
-                    <p><strong>Status:</strong> ${location.status.charAt(0).toUpperCase() + location.status.slice(1)}</p>
-                </div>
-                <div class="info-section">
-                    <h4>Contact</h4>
-                    <p>For more information about programs in this area, please contact our regional coordinator.</p>
-                </div>
-            `;
+            
+            // Clear existing content
+            countyInfo.innerHTML = '';
+            
+            // Create elements safely
+            const title = document.createElement('h3');
+            title.textContent = location.name;
+            countyInfo.appendChild(title);
+            
+            const programSection = document.createElement('div');
+            programSection.className = 'info-section';
+            const programTitle = document.createElement('h4');
+            programTitle.textContent = 'Program Details';
+            programSection.appendChild(programTitle);
+            const programDesc = document.createElement('p');
+            programDesc.textContent = location.description;
+            programSection.appendChild(programDesc);
+            countyInfo.appendChild(programSection);
+            
+            const impactSection = document.createElement('div');
+            impactSection.className = 'info-section';
+            const impactTitle = document.createElement('h4');
+            impactTitle.textContent = 'Impact';
+            impactSection.appendChild(impactTitle);
+            const peopleServed = document.createElement('p');
+            peopleServed.innerHTML = `<strong>People Served:</strong> ${location.peopleServed.toLocaleString()}`;
+            impactSection.appendChild(peopleServed);
+            const status = document.createElement('p');
+            status.innerHTML = `<strong>Status:</strong> ${location.status.charAt(0).toUpperCase() + location.status.slice(1)}`;
+            impactSection.appendChild(status);
+            countyInfo.appendChild(impactSection);
+            
+            const contactSection = document.createElement('div');
+            contactSection.className = 'info-section';
+            const contactTitle = document.createElement('h4');
+            contactTitle.textContent = 'Contact';
+            contactSection.appendChild(contactTitle);
+            const contactText = document.createElement('p');
+            contactText.textContent = 'For more information about programs in this area, please contact our regional coordinator.';
+            contactSection.appendChild(contactText);
+            countyInfo.appendChild(contactSection);
         }
     </script>
 </body>
