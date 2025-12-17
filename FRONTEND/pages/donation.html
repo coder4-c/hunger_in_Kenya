@@ -113,16 +113,17 @@
                         
                         <!-- Quick Amount Selection -->
                         <div class="quick-amounts">
-                            <h3>Select Amount</h3>
+                            <h3>Select Amount (KES)</h3>
                             <div class="amount-options">
-                                <button class="amount-btn" data-amount="25">$25</button>
-                                <button class="amount-btn" data-amount="50">$50</button>
-                                <button class="amount-btn" data-amount="100">$100</button>
-                                <button class="amount-btn" data-amount="250">$250</button>
-                                <button class="amount-btn" data-amount="500">$500</button>
+                                <button class="amount-btn" data-amount="10">10 KES</button>
+                                <button class="amount-btn" data-amount="50">50 KES</button>
+                                <button class="amount-btn" data-amount="100">100 KES</button>
+                                <button class="amount-btn" data-amount="250">250 KES</button>
+                                <button class="amount-btn" data-amount="500">500 KES</button>
+                                <button class="amount-btn" data-amount="1000">1000 KES</button>
                                 <div class="custom-amount">
-                                    <span>$</span>
-                                    <input type="number" id="custom-amount" placeholder="Custom amount" min="1">
+                                    <span>KSh</span>
+                                    <input type="number" id="custom-amount" placeholder="Custom amount" min="10">
                                 </div>
                             </div>
                         </div>
@@ -221,7 +222,12 @@
                                 <h3>Payment Method</h3>
                                 <div class="payment-options">
                                     <label class="payment-option">
-                                        <input type="radio" name="payment" value="card" checked>
+                                        <input type="radio" name="payment" value="mpesa" checked>
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>M-Pesa</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="card">
                                         <i class="fas fa-credit-card"></i>
                                         <span>Credit/Debit Card</span>
                                     </label>
@@ -266,7 +272,7 @@
                                 <h3>Donation Summary</h3>
                                 <div class="summary-line">
                                     <span>Amount:</span>
-                                    <span id="summary-amount">$50.00</span>
+                                    <span id="summary-amount">KSh 50.00</span>
                                 </div>
                                 <div class="summary-line">
                                     <span>Frequency:</span>
@@ -274,7 +280,7 @@
                                 </div>
                                 <div class="summary-line total">
                                     <span>Total:</span>
-                                    <span id="summary-total">$50.00</span>
+                                    <span id="summary-total">KSh 50.00</span>
                                 </div>
                             </div>
                             
@@ -575,5 +581,6 @@
     <script src="../js/navigation.js"></script>
     <script src="../js/pages.js"></script>
     <script src="../js/donation-tracker.js"></script>
+    <script src="../js/mpesa-integration.js"></script>
 </body>
 </html>

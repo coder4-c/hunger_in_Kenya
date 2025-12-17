@@ -15,6 +15,9 @@ const Contact = require('./models/Contact');
 const Volunteer = require('./models/Volunteer');
 const Newsletter = require('./models/Newsletter');
 
+// Import routes
+const mpesaRoutes = require('./routes/mpesa');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -333,12 +336,15 @@ app.post('/api/volunteer', [
     }
 });
 
-// Donation API
+// M-Pesa API routes
+app.use('/api/mpesa', mpesaRoutes);
+
+// Donation API (legacy - for non-M-Pesa donations)
 app.post('/api/donation', [
     body('donorName').trim().isLength({ min: 1 }).withMessage('Donor name is required'),
     body('donorEmail').isEmail().normalizeEmail().withMessage('Valid email is required'),
     body('amount').isFloat({ min: 1 }).withMessage('Valid donation amount is required'),
-    body('paymentMethod').isIn(['card', 'bank_transfer', 'mobile_money', 'paypal']).withMessage('Valid payment method is required'),
+    body('paymentMethod').isIn(['card', 'bank_transfer', 'mobile_money', 'paypal', 'mpesa']).withMessage('Valid payment method is required'),
     body('program').optional().isIn(['emergency-relief', 'school-feeding', 'sustainable-farming', 'community-development', 'general'])
 ], async (req, res) => {
     try {
@@ -352,8 +358,16 @@ app.post('/api/donation', [
 
         const donationData = req.body;
 
-        // In a real application, you would process payment here
-        // For now, we'll save as pending
+        // If it's an M-Pesa donation, redirect to M-Pesa endpoint
+        if (donationData.paymentMethod === 'mpesa') {
+            return res.status(400).json({
+                success: false,
+                message: 'Please use the M-Pesa payment flow for M-Pesa donations.',
+                redirectToMpesa: true
+            });
+        }
+
+        // For other payment methods, save as pending
         donationData.paymentStatus = 'pending';
 
         // Save to database

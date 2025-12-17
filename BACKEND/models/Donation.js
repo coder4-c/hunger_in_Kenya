@@ -19,13 +19,13 @@ const donationSchema = new mongoose.Schema({
     },
     currency: {
         type: String,
-        default: 'USD',
+        default: 'KES',
         enum: ['USD', 'KES', 'EUR']
     },
     paymentMethod: {
         type: String,
         required: true,
-        enum: ['card', 'bank_transfer', 'mobile_money', 'paypal']
+        enum: ['card', 'bank_transfer', 'mobile_money', 'paypal', 'mpesa']
     },
     paymentStatus: {
         type: String,
@@ -49,6 +49,8 @@ const donationSchema = new mongoose.Schema({
     stripePaymentId: String,
     paypalPaymentId: String,
     mpesaReference: String,
+    mpesaReceipt: String,
+    phoneNumber: String,
     message: {
         type: String,
         maxlength: 500
