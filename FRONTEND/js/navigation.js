@@ -261,6 +261,10 @@ class Navigation {
     // Handle donation button click
     handleDonationClick(e) {
         e.preventDefault();
+        const link = e.target.closest('.nav-link');
+        if (!link) return;
+        
+        const href = link.getAttribute('href');
         
         // Track donation button click
         this.trackEvent('donation_button_click', {
@@ -269,7 +273,7 @@ class Navigation {
         });
         
         // Redirect to donation page
-        if (href = link.getAttribute('href')) {
+        if (href) {
             window.location.href = href;
         }
     }
