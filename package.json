@@ -1,0 +1,23 @@
+{
+  "name": "hunger_in_kenya",
+  "version": "1.0.0",
+  "description": "A comprehensive website dedicated to addressing the hunger crisis in Kenya",
+  "main": "index.js",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "live-server --port=8000",
+    "build": "echo 'Website ready for deployment'"
+  },
+  "keywords": [
+    "hunger",
+    "kenya",
+    "food-security",
+    "charity",
+    "nonprofit"
+  ],
+  "author": "Hunger in Kenya Initiative",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

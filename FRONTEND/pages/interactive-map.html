@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map - Our Impact Across Kenya</title>
+    <meta name="description" content="Explore our programs and impact across Kenya's counties through this interactive map showing where we're making a difference.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Leaflet CSS for Interactive Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html"><h2>Hunger in Kenya</h2></a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about-crisis.html" class="nav-link">About the Crisis</a>
+                </li>
+                <li class="nav-item">
+                    <a href="our-solutions.html" class="nav-link">Our Solutions</a>
+                </li>
+                <li class="nav-item">
+                    <a href="how-to-help.html" class="nav-link">How to Help</a>
+                </li>
+                <li class="nav-item">
+                    <a href="impact-stories.html" class="nav-link">Impact Stories</a>
+                </li>
+                <li class="nav-item">
+                    <a href="get-involved.html" class="nav-link">Get Involved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="donation.html" class="nav-link donate-btn">Donate</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span class="separator">/</span>
+                    <span>Interactive Map</span>
+                </div>
+                <h1>Our Impact Across Kenya</h1>
+                <p>Explore where our programs are making a difference and see the scope of our work across Kenya's counties</p>
+            </div>
+        </section>
+
+        <!-- Map Controls -->
+        <section class="map-controls">
+            <div class="container">
+                <div class="controls-container">
+                    <div class="program-filters">
+                        <h3>Filter by Program Type</h3>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-program="all">
+                                <i class="fas fa-globe"></i>
+                                All Programs
+                            </button>
+                            <button class="filter-btn" data-program="emergency-relief">
+                                <i class="fas fa-utensils"></i>
+                                Emergency Relief
+                            </button>
+                            <button class="filter-btn" data-program="sustainable-farming">
+                                <i class="fas fa-seedling"></i>
+                                Sustainable Farming
+                            </button>
+                            <button class="filter-btn" data-program="school-feeding">
+                                <i class="fas fa-school"></i>
+                                School Feeding
+                            </button>
+                            <button class="filter-btn" data-program="community-development">
+                                <i class="fas fa-users"></i>
+                                Community Development
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="map-legend">
+                        <h3>Legend</h3>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <div class="legend-marker active"></div>
+                                <span>Active Programs</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker planned"></div>
+                                <span>Planned Programs</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker completed"></div>
+                                <span>Completed Programs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map -->
+        <section class="interactive-map">
+            <div class="container">
+                <div class="map-layout">
+                    <div class="map-container">
+                        <div id="kenya-map" class="map">
+                            <!-- Map will be initialized with JavaScript -->
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <h3>Interactive Map Loading...</h3>
+                                <p>Our map is loading with the latest program data</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-sidebar">
+                        <div class="map-stats">
+                            <h3>Overview Statistics</h3>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-number">47</div>
+                                    <div class="stat-label">Counties with Programs</div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-number">156,000+</div>
+                                    <div class="stat-label">People Served</div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-number">340</div>
+                                    <div class="stat-label">Active Projects</div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-number">45</div>
+                                    <div class="stat-label">Communities Transformed</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="county-info" id="county-info">
+                            <h3>County Information</h3>
+                            <p>Click on a marker to see detailed information about our programs in that area.</p>
+                        </div>
+                        
+                        <div class="program-legend">
+                            <h3>Program Types</h3>
+                            <div class="program-type">
+                                <div class="type-marker emergency"></div>
+                                <div class="type-info">
+                                    <strong>Emergency Relief</strong>
+                                    <p>Food distribution, water, and humanitarian aid</p>
+                                </div>
+                            </div>
+                            <div class="program-type">
+                                <div class="type-marker farming"></div>
+                                <div class="type-info">
+                                    <strong>Sustainable Farming</strong>
+                                    <p>Agricultural training, seeds, and equipment</p>
+                                </div>
+                            </div>
+                            <div class="program-type">
+                                <div class="type-marker school"></div>
+                                <div class="type-info">
+                                    <strong>School Feeding</strong>
+                                    <p>Nutrition programs and education support</p>
+                                </div>
+                            </div>
+                            <div class="program-type">
+                                <div class="type-marker community"></div>
+                                <div class="type-info">
+                                    <strong>Community Development</strong>
+                                    <p>Capacity building and infrastructure</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regional Details -->
+        <section class="regional-details">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Regional Program Overview</h2>
+                    <p>Detailed breakdown of our programs across Kenya's major regions</p>
+                </div>
+                
+                <div class="regions-grid">
+                    <div class="region-card">
+                        <div class="region-header">
+                            <h3>Northern Kenya</h3>
+                            <div class="region-counties">Turkana, Marsabit, Samburu, Isiolo</div>
+                        </div>
+                        <div class="region-content">
+                            <div class="region-stats">
+                                <div class="region-stat">
+                                    <span class="stat-number">45,000</span>
+                                    <span class="stat-label">People Served</span>
+                                </div>
+                                <div class="region-stat">
+                                    <span class="stat-number">12</span>
+                                    <span class="stat-label">Active Programs</span>
+                                </div>
+                            </div>
+                            <div class="region-programs">
+                                <h4>Primary Programs</h4>
+                                <ul>
+                                    <li><i class="fas fa-utensils"></i> Emergency food distribution</li>
+                                    <li><i class="fas fa-tint"></i> Clean water provision</li>
+                                    <li><i class="fas fa-seedling"></i> Drought-resistant farming</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="region-card">
+                        <div class="region-header">
+                            <h3>Eastern Kenya</h3>
+                            <div class="region-counties">Garissa, Wajir, Mandera, Kitui, Makueni</div>
+                        </div>
+                        <div class="region-content">
+                            <div class="region-stats">
+                                <div class="region-stat">
+                                    <span class="stat-number">38,000</span>
+                                    <span class="stat-label">People Served</span>
+                                </div>
+                                <div class="region-stat">
+                                    <span class="stat-number">18</span>
+                                    <span class="stat-label">Active Programs</span>
+                                </div>
+                            </div>
+                            <div class="region-programs">
+                                <h4>Primary Programs</h4>
+                                <ul>
+                                    <li><i class="fas fa-school"></i> School feeding programs</li>
+                                    <li><i class="fas fa-seedling"></i> Agricultural training</li>
+                                    <li><i class="fas fa-users"></i> Women's cooperatives</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="region-card">
+                        <div class="region-header">
+                            <h3>Coastal Kenya</h3>
+                            <div class="region-counties">Kilifi, Kwale, Tana River, Lamu</div>
+                        </div>
+                        <div class="region-content">
+                            <div class="region-stats">
+                                <div class="region-stat">
+                                    <span class="stat-number">28,000</span>
+                                    <span class="stat-label">People Served</span>
+                                </div>
+                                <div class="region-stat">
+                                    <span class="stat-number">15</span>
+                                    <span class="stat-label">Active Programs</span>
+                                </div>
+                            </div>
+                            <div class="region-programs">
+                                <h4>Primary Programs</h4>
+                                <ul>
+                                    <li><i class="fas fa-utensils"></i> Nutrition education</li>
+                                    <li><i class="fas fa-fish"></i> Fishing community support</li>
+                                    <li><i class="fas fa-seedling"></i> Coastal agriculture</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="region-card">
+                        <div class="region-header">
+                            <h3>Central Kenya</h3>
+                            <div class="region-counties">Nairobi, Kiambu, Murang'a, Nyeri</div>
+                        </div>
+                        <div class="region-content">
+                            <div class="region-stats">
+                                <div class="region-stat">
+                                    <span class="stat-number">35,000</span>
+                                    <span class="stat-label">People Served</span>
+                                </div>
+                                <div class="region-stat">
+                                    <span class="stat-number">20</span>
+                                    <span class="stat-label">Active Programs</span>
+                                </div>
+                            </div>
+                            <div class="region-programs">
+                                <h4>Primary Programs</h4>
+                                <ul>
+                                    <li><i class="fas fa-graduation-cap"></i> Urban agriculture training</li>
+                                    <li><i class="fas fa-users"></i> Youth employment programs</li>
+                                    <li><i class="fas fa-laptop"></i> Digital literacy</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="region-card">
+                        <div class="region-header">
+                            <h3>Rift Valley</h3>
+                            <div class="region-counties">Uasin Gishu, Nakuru, Trans Nzoia, Nandi</div>
+                        </div>
+                        <div class="region-content">
+                            <div class="region-stats">
+                                <div class="region-stat">
+                                    <span class="stat-number">10,000</span>
+                                    <span class="stat-label">People Served</span>
+                                </div>
+                                <div class="region-stat">
+                                    <span class="stat-number">8</span>
+                                    <span class="stat-label">Active Programs</span>
+                                </div>
+                            </div>
+                            <div class="region-programs">
+                                <h4>Primary Programs</h4>
+                                <ul>
+                                    <li><i class="fas fa-seedling"></i> Commercial farming support</li>
+                                    <li><i class="fas fa-tractor"></i> Equipment sharing programs</li>
+                                    <li><i class="fas fa-chart-line"></i> Market linkage initiatives</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Stories by Location -->
+        <section class="location-stories">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Stories from Our Locations</h2>
+                    <p>Real impact stories from the communities where we work</p>
+                </div>
+                
+                <div class="stories-carousel">
+                    <div class="story-card">
+                        <div class="story-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Turkana County</span>
+                        </div>
+                        <h3>From Drought to Abundance</h3>
+                        <p>How the adoption of drought-resistant crops transformed farming in Turkana, enabling 500 families to achieve food security.</p>
+                        <a href="impact-stories.html#turkana-story" class="btn btn-outline">Read Full Story</a>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Garissa County</span>
+                        </div>
+                        <h3>School Meals Changing Lives</h3>
+                        <p>School feeding programs in Garissa have improved attendance by 85% and helped 2,000 children stay in school.</p>
+                        <a href="impact-stories.html#garissa-story" class="btn btn-outline">Read Full Story</a>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kitui County</span>
+                        </div>
+                        <h3>Women's Cooperative Success</h3>
+                        <p>A women's farming cooperative in Kitui has increased incomes by 200% and is now helping 50 neighboring families.</p>
+                        <a href="impact-stories.html#kitui-story" class="btn btn-outline">Read Full Story</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Expansion -->
+        <section class="future-expansion">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Planned Expansion</h2>
+                    <p>Where we're planning to expand our programs in the coming year</p>
+                </div>
+                
+                <div class="expansion-grid">
+                    <div class="expansion-item">
+                        <div class="expansion-region">
+                            <h3>Western Kenya</h3>
+                            <div class="expansion-counties">Kisumu, Siaya, Bungoma</div>
+                        </div>
+                        <div class="expansion-details">
+                            <div class="expansion-programs">
+                                <h4>Planned Programs</h4>
+                                <ul>
+                                    <li>Agricultural training for smallholder farmers</li>
+                                    <li>Fish farming development</li>
+                                    <li>Community health and nutrition</li>
+                                </ul>
+                            </div>
+                            <div class="expansion-timeline">
+                                <div class="timeline-item">
+                                    <span class="timeline-date">Q1 2025</span>
+                                    <span class="timeline-event">Program design and stakeholder engagement</span>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-date">Q2 2025</span>
+                                    <span class="timeline-event">Pilot program launch</span>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-date">Q3 2025</span>
+                                    <span class="timeline-event">Full program rollout</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expansion-item">
+                        <div class="expansion-region">
+                            <h3>South Rift Valley</h3>
+                            <div class="expansion-counties">Kericho, Bomet, Nyamira</div>
+                        </div>
+                        <div class="expansion-details">
+                            <div class="expansion-programs">
+                                <h4>Planned Programs</h4>
+                                <ul>
+                                    <li>Dairy farming improvement programs</li>
+                                    <li>Climate-smart agriculture</li>
+                                    <li>Youth entrepreneurship training</li>
+                                </ul>
+                            </div>
+                            <div class="expansion-timeline">
+                                <div class="timeline-item">
+                                    <span class="timeline-date">Q2 2025</span>
+                                    <span class="timeline-event">Community needs assessment</span>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-date">Q3 2025</span>
+                                    <span class="timeline-event">Partnership establishment</span>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-date">Q4 2025</span>
+                                    <span class="timeline-event">Program launch</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="page-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Help Us Expand Our Reach</h2>
+                    <p>Your support can help us reach more communities and create greater impact across Kenya. Join us in our mission to end hunger.</p>
+                    <div class="cta-buttons">
+                        <a href="donation.html" class="btn btn-primary">
+                            <i class="fas fa-heart"></i>
+                            Support Our Programs
+                        </a>
+                        <a href="get-involved.html" class="btn btn-outline">
+                            <i class="fas fa-hands-helping"></i>
+                            Get Involved
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hunger in Kenya</h3>
+                    <p>Creating lasting change through sustainable solutions and community empowerment.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about-crisis.html">About the Crisis</a></li>
+                        <li><a href="our-solutions.html">Our Solutions</a></li>
+                        <li><a href="how-to-help.html">How to Help</a></li>
+                        <li><a href="impact-stories.html">Impact Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="get-involved.html">Volunteer</a></li>
+                        <li><a href="donation.html">Donate</a></li>
+                        <li><a href="partnerships.html">Partner with Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@hungerinkenya.org</p>
+                        <p><i class="fas fa-phone"></i> +254 700 123 456</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hunger in Kenya Initiative. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/pages.js"></script>
+    
+    <!-- Leaflet JavaScript for Interactive Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Map Initialization Script -->
+    <script>
+        // Initialize map when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kenya coordinates
+            const kenyaCenter = [-0.0236, 37.9062];
+            const map = L.map('kenya-map').setView(kenyaCenter, 6);
+            
+            // Add tile layer (OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Sample program locations
+            const programLocations = [
+                {
+                    name: "Turkana County - Emergency Relief",
+                    lat: 3.1167,
+                    lng: 35.5997,
+                    type: "emergency-relief",
+                    status: "active",
+                    description: "Emergency food distribution for 15,000 families",
+                    peopleServed: 75000
+                },
+                {
+                    name: "Garissa County - School Feeding",
+                    lat: -0.4536,
+                    lng: 39.6401,
+                    type: "school-feeding",
+                    status: "active",
+                    description: "School feeding program serving 25,000 children",
+                    peopleServed: 25000
+                },
+                {
+                    name: "Kitui County - Sustainable Farming",
+                    lat: -1.3700,
+                    lng: 38.0100,
+                    type: "sustainable-farming",
+                    status: "active",
+                    description: "Training 2,000 farmers in drought-resistant agriculture",
+                    peopleServed: 10000
+                },
+                {
+                    name: "Nairobi County - Community Development",
+                    lat: -1.2921,
+                    lng: 36.8219,
+                    type: "community-development",
+                    status: "active",
+                    description: "Urban agriculture and youth employment programs",
+                    peopleServed: 5000
+                }
+            ];
+            
+            // Create custom icons for different program types
+            const icons = {
+                'emergency-relief': 'fa-utensils',
+                'sustainable-farming': 'fa-seedling',
+                'school-feeding': 'fa-school',
+                'community-development': 'fa-users'
+            };
+            
+            const statusColors = {
+                'active': '#bb0000',
+                'planned': '#ff8c00',
+                'completed': '#228b22'
+            };
+            
+            // Add markers to map
+            programLocations.forEach(location => {
+                const icon = L.divIcon({
+                    html: `<div style="background-color: ${statusColors[location.status]}; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
+                    className: 'custom-marker',
+                    iconSize: [20, 20],
+                    iconAnchor: [10, 10]
+                });
+                
+                const marker = L.marker([location.lat, location.lng], { icon: icon }).addTo(map);
+                
+                // Create popup content
+                const popupContent = `
+                    <div class="map-popup">
+                        <h4>${location.name}</h4>
+                        <p><strong>Program:</strong> ${location.description}</p>
+                        <p><strong>People Served:</strong> ${location.peopleServed.toLocaleString()}</p>
+                        <p><strong>Status:</strong> <span style="color: ${statusColors[location.status]}">${location.status.charAt(0).toUpperCase() + location.status.slice(1)}</span></p>
+                    </div>
+                `;
+                
+                marker.bindPopup(popupContent);
+                
+                // Add click event to update sidebar
+                marker.on('click', function() {
+                    updateCountyInfo(location);
+                });
+            });
+            
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const programType = this.dataset.program;
+                    // Filter markers based on program type
+                    // This would filter the markers on the map
+                });
+            });
+        });
+        
+        function updateCountyInfo(location) {
+            const countyInfo = document.getElementById('county-info');
+            countyInfo.innerHTML = `
+                <h3>${location.name}</h3>
+                <div class="info-section">
+                    <h4>Program Details</h4>
+                    <p>${location.description}</p>
+                </div>
+                <div class="info-section">
+                    <h4>Impact</h4>
+                    <p><strong>People Served:</strong> ${location.peopleServed.toLocaleString()}</p>
+                    <p><strong>Status:</strong> ${location.status.charAt(0).toUpperCase() + location.status.slice(1)}</p>
+                </div>
+                <div class="info-section">
+                    <h4>Contact</h4>
+                    <p>For more information about programs in this area, please contact our regional coordinator.</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

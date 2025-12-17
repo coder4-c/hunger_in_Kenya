@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Help End Hunger in Kenya</title>
+    <meta name="description" content="Make a donation to help end hunger in Kenya. Your contribution provides emergency food aid, supports sustainable farming, and empowers communities.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html"><h2>Hunger in Kenya</h2></a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about-crisis.html" class="nav-link">About the Crisis</a>
+                </li>
+                <li class="nav-item">
+                    <a href="our-solutions.html" class="nav-link">Our Solutions</a>
+                </li>
+                <li class="nav-item">
+                    <a href="how-to-help.html" class="nav-link">How to Help</a>
+                </li>
+                <li class="nav-item">
+                    <a href="impact-stories.html" class="nav-link">Impact Stories</a>
+                </li>
+                <li class="nav-item">
+                    <a href="get-involved.html" class="nav-link">Get Involved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="donation.html" class="nav-link donate-btn active">Donate</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header donation-header">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span class="separator">/</span>
+                    <span>Donate</span>
+                </div>
+                <h1>Your Donation Creates Change</h1>
+                <p>Every contribution, no matter the size, directly helps families in Kenya access nutritious food and build sustainable futures</p>
+            </div>
+        </section>
+
+        <!-- Donation Impact Banner -->
+        <section class="impact-banner">
+            <div class="container">
+                <div class="banner-content">
+                    <div class="impact-stat">
+                        <span class="stat-number">$25</span>
+                        <span class="stat-label">Feeds a family for a month</span>
+                    </div>
+                    <div class="impact-stat">
+                        <span class="stat-number">$50</span>
+                        <span class="stat-label">Provides school meals for 20 children</span>
+                    </div>
+                    <div class="impact-stat">
+                        <span class="stat-number">$100</span>
+                        <span class="stat-label">Trains a farmer in modern techniques</span>
+                    </div>
+                    <div class="impact-stat">
+                        <span class="stat-number">$250</span>
+                        <span class="stat-label">Empowers a community group</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Form Section -->
+        <section class="donation-form-section">
+            <div class="container">
+                <div class="donation-layout">
+                    <div class="donation-form-container">
+                        <div class="donation-form-header">
+                            <h2>Make Your Donation</h2>
+                            <p>Secure donation processing powered by industry-leading security</p>
+                        </div>
+                        
+                        <!-- Quick Amount Selection -->
+                        <div class="quick-amounts">
+                            <h3>Select Amount</h3>
+                            <div class="amount-options">
+                                <button class="amount-btn" data-amount="25">$25</button>
+                                <button class="amount-btn" data-amount="50">$50</button>
+                                <button class="amount-btn" data-amount="100">$100</button>
+                                <button class="amount-btn" data-amount="250">$250</button>
+                                <button class="amount-btn" data-amount="500">$500</button>
+                                <div class="custom-amount">
+                                    <span>$</span>
+                                    <input type="number" id="custom-amount" placeholder="Custom amount" min="1">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Donation Form -->
+                        <form class="donation-form" id="donation-form">
+                            <div class="donation-frequency">
+                                <h3>Frequency</h3>
+                                <div class="frequency-options">
+                                    <label class="frequency-option">
+                                        <input type="radio" name="frequency" value="one-time" checked>
+                                        <span class="checkmark"></span>
+                                        One-time
+                                    </label>
+                                    <label class="frequency-option">
+                                        <input type="radio" name="frequency" value="monthly">
+                                        <span class="checkmark"></span>
+                                        Monthly
+                                    </label>
+                                    <label class="frequency-option">
+                                        <input type="radio" name="frequency" value="quarterly">
+                                        <span class="checkmark"></span>
+                                        Quarterly
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="donation-designation">
+                                <h3>Designation</h3>
+                                <select name="designation" class="designation-select">
+                                    <option value="where-needed">Where Needed Most</option>
+                                    <option value="emergency-relief">Emergency Food Relief</option>
+                                    <option value="school-feeding">School Feeding Programs</option>
+                                    <option value="sustainable-farming">Sustainable Farming Training</option>
+                                    <option value="community-development">Community Development</option>
+                                </select>
+                            </div>
+                            
+                            <div class="donor-information">
+                                <h3>Your Information</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="first-name">First Name *</label>
+                                        <input type="text" id="first-name" name="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last-name">Last Name *</label>
+                                        <input type="text" id="last-name" name="lastName" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" id="address" name="address" placeholder="Street address">
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input type="text" id="city" name="city">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="state">State/Province</label>
+                                        <input type="text" id="state" name="state">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="zip">ZIP/Postal Code</label>
+                                        <input type="text" id="zip" name="zip">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <select id="country" name="country">
+                                        <option value="US">United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="GB">United Kingdom</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="KE">Kenya</option>
+                                        <option value="OTHER">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <h3>Payment Method</h3>
+                                <div class="payment-options">
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="card" checked>
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Credit/Debit Card</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="paypal">
+                                        <i class="fab fa-paypal"></i>
+                                        <span>PayPal</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="bank">
+                                        <i class="fas fa-university"></i>
+                                        <span>Bank Transfer</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-details" id="payment-details">
+                                <!-- Payment fields will be dynamically shown based on selection -->
+                            </div>
+                            
+                            <div class="donation-extras">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="anonymous">
+                                    <span class="checkmark"></span>
+                                    Make this donation anonymous
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter" checked>
+                                    <span class="checkmark"></span>
+                                    Send me updates about my impact and other ways to help
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="employer-match">
+                                    <span class="checkmark"></span>
+                                    My employer offers matching gifts
+                                </label>
+                            </div>
+                            
+                            <div class="donation-summary">
+                                <h3>Donation Summary</h3>
+                                <div class="summary-line">
+                                    <span>Amount:</span>
+                                    <span id="summary-amount">$50.00</span>
+                                </div>
+                                <div class="summary-line">
+                                    <span>Frequency:</span>
+                                    <span id="summary-frequency">One-time</span>
+                                </div>
+                                <div class="summary-line total">
+                                    <span>Total:</span>
+                                    <span id="summary-total">$50.00</span>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-large donate-btn">
+                                <i class="fas fa-heart"></i>
+                                Donate Now
+                            </button>
+                            
+                            <div class="security-badges">
+                                <div class="badge">
+                                    <i class="fas fa-lock"></i>
+                                    <span>256-bit SSL encryption</span>
+                                </div>
+                                <div class="badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>PCI DSS compliant</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="donation-sidebar">
+                        <div class="impact-highlight">
+                            <h3>Your Impact</h3>
+                            <div class="impact-visual">
+                                <div class="impact-circle">
+                                    <div class="circle-fill" style="--percentage: 85%"></div>
+                                    <div class="circle-content">
+                                        <span class="impact-number" id="impact-people">4</span>
+                                        <span class="impact-label">People Fed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Your donation will directly provide nutritious meals for <strong id="impact-people-text">4 people</strong> for a full month.</p>
+                        </div>
+                        
+                        <div class="donor-info">
+                            <h3>Why Donate?</h3>
+                            <ul class="donor-benefits">
+                                <li><i class="fas fa-check"></i> 100% of donations go to programs</li>
+                                <li><i class="fas fa-check"></i> Tax-deductible in most countries</li>
+                                <li><i class="fas fa-check"></i> Regular impact reports</li>
+                                <li><i class="fas fa-check"></i> Secure online processing</li>
+                                <li><i class="fas fa-check"></i> Cancel anytime</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="testimonial">
+                            <blockquote>
+                                "The monthly updates show exactly how our donation is making a difference. It's incredible to see the real impact of our contribution."
+                            </blockquote>
+                            <cite>- Sarah M., Monthly Donor</cite>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h3>Questions?</h3>
+                            <p>Our donor relations team is here to help:</p>
+                            <div class="contact-methods">
+                                <a href="mailto:donations@hungerinkenya.org">
+                                    <i class="fas fa-envelope"></i>
+                                    donations@hungerinkenya.org
+                                </a>
+                                <a href="tel:+254700123456">
+                                    <i class="fas fa-phone"></i>
+                                    +254 700 123 456
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Ways to Give -->
+        <section class="other-giving-methods">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Other Ways to Give</h2>
+                    <p>Multiple options to support our mission based on your preferences</p>
+                </div>
+                
+                <div class="giving-methods-grid">
+                    <div class="giving-method">
+                        <div class="method-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Money</h3>
+                        <p>Donate via M-Pesa or other mobile money services popular in Kenya.</p>
+                        <div class="method-details">
+                            <p><strong>Paybill:</strong> 247247</p>
+                            <p><strong>Account:</strong> HungerKenya</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                    
+                    <div class="giving-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Mail a Check</h3>
+                        <p>Send a check payable to "Hunger in Kenya Initiative" to our office.</p>
+                        <div class="method-details">
+                            <p><strong>Address:</strong><br>
+                            Hunger in Kenya Initiative<br>
+                            P.O. Box 12345<br>
+                            Nairobi, Kenya</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Get Details</a>
+                    </div>
+                    
+                    <div class="giving-method">
+                        <div class="method-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Bank Transfer</h3>
+                        <p>Direct bank transfer to our organizational account.</p>
+                        <div class="method-details">
+                            <p><strong>Bank:</strong> Kenya Commercial Bank</p>
+                            <p><strong>Account:</strong> 1234567890</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Contact Us</a>
+                    </div>
+                    
+                    <div class="giving-method">
+                        <div class="method-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3>Donate Stock</h3>
+                        <p>Donate appreciated securities for potential tax benefits.</p>
+                        <div class="method-details">
+                            <p>Contact our planned giving team for transfer instructions and tax information.</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                    
+                    <div class="giving-method">
+                        <div class="method-icon">
+                            <i class="fas fa-willow"></i>
+                        </div>
+                        <h3>Legacy Giving</h3>
+                        <p>Include Hunger in Kenya in your estate planning or will.</p>
+                        <div class="method-details">
+                            <p>Create lasting impact through planned giving options that benefit future generations.</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Get Info</a>
+                    </div>
+                    
+                    <div class="giving-method">
+                        <div class="method-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Corporate Matching</h3>
+                        <p>Double your impact through your employer's matching gift program.</p>
+                        <div class="method-details">
+                            <p>Many employers will match charitable donations, effectively doubling your contribution.</p>
+                        </div>
+                        <a href="#" class="btn btn-outline">Check Eligibility</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transparency & Accountability -->
+        <section class="transparency">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Accountability & Transparency</h2>
+                    <p>We are committed to responsible stewardship of your donations</p>
+                </div>
+                
+                <div class="transparency-grid">
+                    <div class="transparency-card">
+                        <div class="transparency-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3>Program Efficiency</h3>
+                        <div class="efficiency-breakdown">
+                            <div class="efficiency-item">
+                                <span class="efficiency-label">Direct Programs</span>
+                                <div class="efficiency-bar">
+                                    <div class="efficiency-fill" style="width: 87%"></div>
+                                    <span class="efficiency-percentage">87%</span>
+                                </div>
+                            </div>
+                            <div class="efficiency-item">
+                                <span class="efficiency-label">Fundraising</span>
+                                <div class="efficiency-bar">
+                                    <div class="efficiency-fill" style="width: 8%"></div>
+                                    <span class="efficiency-percentage">8%</span>
+                                </div>
+                            </div>
+                            <div class="efficiency-item">
+                                <span class="efficiency-label">Administration</span>
+                                <div class="efficiency-bar">
+                                    <div class="efficiency-fill" style="width: 5%"></div>
+                                    <span class="efficiency-percentage">5%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="transparency-card">
+                        <div class="transparency-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Certifications</h3>
+                        <ul class="certifications">
+                            <li><i class="fas fa-check"></i> Charity Navigator 4-Star Rating</li>
+                            <li><i class="fas fa-check"></i> GuideStar Platinum Seal</li>
+                            <li><i class="fas fa-check"></i> Better Business Bureau Accredited</li>
+                            <li><i class="fas fa-check"></i> Independent Annual Audits</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="transparency-card">
+                        <div class="transparency-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Financial Reports</h3>
+                        <p>Access our latest financial statements, annual reports, and independent audits.</p>
+                        <div class="report-links">
+                            <a href="#" class="report-link">
+                                <i class="fas fa-download"></i>
+                                Annual Report 2023
+                            </a>
+                            <a href="#" class="report-link">
+                                <i class="fas fa-download"></i>
+                                Financial Statements
+                            </a>
+                            <a href="#" class="report-link">
+                                <i class="fas fa-download"></i>
+                                Independent Audit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hunger in Kenya</h3>
+                    <p>Creating lasting change through sustainable solutions and community empowerment.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about-crisis.html">About the Crisis</a></li>
+                        <li><a href="our-solutions.html">Our Solutions</a></li>
+                        <li><a href="how-to-help.html">How to Help</a></li>
+                        <li><a href="impact-stories.html">Impact Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="get-involved.html">Volunteer</a></li>
+                        <li><a href="donation.html">Donate</a></li>
+                        <li><a href="partnerships.html">Partner with Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@hungerinkenya.org</p>
+                        <p><i class="fas fa-phone"></i> +254 700 123 456</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hunger in Kenya Initiative. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/pages.js"></script>
+    <script src="../js/donation-tracker.js"></script>
+</body>
+</html>
