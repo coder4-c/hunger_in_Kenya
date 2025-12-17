@@ -597,13 +597,31 @@
             // Sample program locations
             const programLocations = [
                 {
+                    name: "Wajir County - Critical Emergency Relief",
+                    lat: 1.7471,
+                    lng: 40.0573,
+                    type: "emergency-relief",
+                    status: "critical",
+                    description: "Critical emergency relief for families struggling with food access as livestock perish due to dried-up water sources",
+                    peopleServed: 150000
+                },
+                {
+                    name: "Mandera County - Critical Emergency Relief",
+                    lat: 3.9361,
+                    lng: 41.8569,
+                    type: "emergency-relief",
+                    status: "critical",
+                    description: "Critical emergency relief in one of the worst-hit areas with severe food insecurity and depleted grazing fields",
+                    peopleServed: 120000
+                },
+                {
                     name: "Turkana County - Emergency Relief",
                     lat: 3.1167,
                     lng: 35.5997,
                     type: "emergency-relief",
                     status: "active",
-                    description: "Emergency food distribution for 15,000 families",
-                    peopleServed: 75000
+                    description: "Emergency food distribution and therapeutic feeding programs for malnourished children",
+                    peopleServed: 95000
                 },
                 {
                     name: "Garissa County - School Feeding",
@@ -611,26 +629,8 @@
                     lng: 39.6401,
                     type: "school-feeding",
                     status: "active",
-                    description: "School feeding program serving 25,000 children",
-                    peopleServed: 25000
-                },
-                {
-                    name: "Kitui County - Sustainable Farming",
-                    lat: -1.3700,
-                    lng: 38.0100,
-                    type: "sustainable-farming",
-                    status: "active",
-                    description: "Training 2,000 farmers in drought-resistant agriculture",
-                    peopleServed: 10000
-                },
-                {
-                    name: "Nairobi County - Community Development",
-                    lat: -1.2921,
-                    lng: 36.8219,
-                    type: "community-development",
-                    status: "active",
-                    description: "Urban agriculture and youth employment programs",
-                    peopleServed: 5000
+                    description: "School feeding program serving children in drought-affected regions",
+                    peopleServed: 35000
                 }
             ];
             
@@ -644,6 +644,7 @@
             
             const statusColors = {
                 'active': '#bb0000',
+                'critical': '#8b0000',
                 'planned': '#ff8c00',
                 'completed': '#228b22'
             };

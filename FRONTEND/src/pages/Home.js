@@ -113,32 +113,32 @@ const Home = ({ donationData, impactStats, loading }) => {
               <div className="stat-icon">
                 <i className="fas fa-users"></i>
               </div>
-              <div className="stat-number">3.4M</div>
-              <div className="stat-description">People face acute food insecurity</div>
+              <div className="stat-number">2.1M+</div>
+              <div className="stat-description">People currently facing acute food insecurity</div>
             </div>
             
             <div className="stat-card">
               <div className="stat-icon">
                 <i className="fas fa-child"></i>
               </div>
-              <div className="stat-number">1.2M</div>
-              <div className="stat-description">Children under 5 affected by malnutrition</div>
+              <div className="stat-number">2.14M</div>
+              <div className="stat-description">Projected by end of December 2025</div>
             </div>
             
             <div className="stat-card">
               <div className="stat-icon">
                 <i className="fas fa-map-marker-alt"></i>
               </div>
-              <div className="stat-number">23</div>
-              <div className="stat-description">Counties declared drought disaster zones</div>
+              <div className="stat-number">32</div>
+              <div className="stat-description">Counties experiencing food insecurity</div>
             </div>
             
             <div className="stat-card">
               <div className="stat-icon">
-                <i className="fas fa-clock"></i>
+                <i className="fas fa-exclamation-triangle"></i>
               </div>
-              <div className="stat-number">6-12</div>
-              <div className="stat-description">Months until next harvest in worst-affected areas</div>
+              <div className="stat-number">10</div>
+              <div className="stat-description">Counties in critical condition</div>
             </div>
           </div>
         </div>
