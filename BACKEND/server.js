@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const path = require('path');
 const rateLimit = require('express-rate-limit');
 const { body, validationResult } = require('express-validator');
 require('dotenv').config();
@@ -17,7 +16,7 @@ const Volunteer = require('./models/Volunteer');
 const Newsletter = require('./models/Newsletter');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Connect to MongoDB
 connectDB();
@@ -34,14 +33,15 @@ app.use(helmet({
         }
     }
 }));
+
 app.use(cors({
     origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     credentials: true
 }));
+
 app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-app.use(express.static(path.join(__dirname, '../FRONTEND')));
 
 // Rate limiting
 const limiter = rateLimit({
@@ -129,7 +129,7 @@ app.get('/api/impact/statistics', async (req, res) => {
         const childrenFedDaily = Math.floor(totalPeopleServed * 0.4); // 40% are children
         const farmersTrained = Math.floor(totalAmount / 100); // $100 per farmer training
         const communitiesTransformed = Math.floor(totalAmount / 10000); // $10k per community
-        const countiesWithPrograms = 23; // Based on Kenya's drought-affected counties
+        const countiesWithPrograms = 32; // Updated based on latest crisis information
         const activeProjects = Math.floor(totalAmount / 5000); // $5k per project
 
         res.json({
@@ -374,11 +374,6 @@ app.post('/api/donation', [
     }
 });
 
-// Serve frontend routes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../FRONTEND/index.html'));
-});
-
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
@@ -388,11 +383,17 @@ app.use((err, req, res, next) => {
     });
 });
 
+// 404 handler for API routes
+app.use('/api/*', (req, res) => {
+    res.status(404).json({ error: 'API endpoint not found' });
+});
+
 // Start server
 app.listen(PORT, () => {
     console.log(`🚀 Hunger in Kenya API server running on port ${PORT}`);
     console.log(`📊 API Health check: http://localhost:${PORT}/api/health`);
-    console.log(`🌐 Frontend: http://localhost:${PORT}`);
+    console.log(`🔗 Connected to MongoDB`);
+    console.log(`⚠️  Frontend should be served separately on port 3000`);
 });
 
 module.exports = app;

@@ -1,28 +1,28 @@
 {
   "name": "hunger_in_kenya",
   "version": "1.0.0",
-  "description": "A comprehensive MERN website dedicated to addressing the hunger crisis in Kenya",
+  "description": "A comprehensive website dedicated to addressing the hunger crisis in Kenya",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd BACKEND && npm run dev\" \"cd FRONTEND && npm run dev\"",
-    "backend": "cd BACKEND && npm run dev",
-    "frontend": "cd FRONTEND && npm run dev",
-    "build": "echo 'Website ready for deployment'"
+    "start": "npm run start:frontend",
+    "start:frontend": "cd FRONTEND && python -m http.server 3000",
+    "start:backend": "cd BACKEND && npm start",
+    "start:all": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "dev": "live-server --port=3000 --entry-file=FRONTEND/index.html",
+    "build": "echo 'Website ready for deployment'",
+    "install:all": "npm install && cd FRONTEND && npm install && cd ../BACKEND && npm install"
   },
   "keywords": [
     "hunger",
     "kenya",
     "food-security",
     "charity",
-    "nonprofit",
-    "MERN",
-    "React",
-    "Node.js",
-    "MongoDB"
+    "nonprofit"
   ],
   "author": "Hunger in Kenya Initiative",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^8.2.0"
+    "live-server": "^1.2.2",
+    "concurrently": "^8.2.2"
   }
 }
