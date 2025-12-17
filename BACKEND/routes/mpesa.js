@@ -9,9 +9,9 @@ const mpesaService = new MpesaService();
 // Middleware to validate request
 const validateMpesaRequest = [
     body('amount').isFloat({ min: 10 }).withMessage('Amount must be at least KES 10'),
-    body('donorName').trim().isLength({ min: 2 }).withMessage('Donor name is required'),
-    body('donorEmail').isEmail().normalizeEmail().withMessage('Valid email is required'),
-    body('phoneNumber').trim().isLength({ min: 10 }).withMessage('Phone number is required'),
+    body('donorName').optional().trim(),
+    body('donorEmail').optional().isEmail().normalizeEmail(),
+    body('phoneNumber').optional().trim(),
     body('program').optional().isIn(['emergency-relief', 'school-feeding', 'sustainable-farming', 'community-development', 'general'])
 ];
 

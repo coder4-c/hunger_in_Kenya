@@ -1,4 +1,4 @@
-// ===== M-PESA INTEGRATION =====
+// ===== M-PESA INTEGRATION - SIMPLIFIED =====
 
 class MpesaIntegration {
     constructor() {
@@ -18,12 +18,6 @@ class MpesaIntegration {
             donationForm.addEventListener('submit', this.handleDonationSubmit.bind(this));
         }
 
-        // Payment method change handler
-        const paymentOptions = document.querySelectorAll('input[name="payment"]');
-        paymentOptions.forEach(option => {
-            option.addEventListener('change', this.handlePaymentMethodChange.bind(this));
-        });
-
         // Amount selection handlers
         const amountButtons = document.querySelectorAll('.amount-btn');
         amountButtons.forEach(btn => {
@@ -35,6 +29,12 @@ class MpesaIntegration {
         if (customAmountInput) {
             customAmountInput.addEventListener('input', this.handleCustomAmountChange.bind(this));
         }
+
+        // Frequency change handler
+        const frequencyOptions = document.querySelectorAll('input[name="frequency"]');
+        frequencyOptions.forEach(option => {
+            option.addEventListener('change', this.updateImpactPreview.bind(this));
+        });
     }
 
     setupFormValidation() {
@@ -42,48 +42,6 @@ class MpesaIntegration {
         const customAmountInput = document.getElementById('custom-amount');
         if (customAmountInput) {
             customAmountInput.min = '10';
-        }
-    }
-
-    handlePaymentMethodChange(event) {
-        const selectedMethod = event.target.value;
-        const paymentDetails = document.getElementById('payment-details');
-        
-        // Clear previous payment details
-        if (paymentDetails) {
-            paymentDetails.innerHTML = '';
-        }
-
-        if (selectedMethod === 'mpesa') {
-            this.showMpesaInstructions();
-        }
-    }
-
-    showMpesaInstructions() {
-        const paymentDetails = document.getElementById('payment-details');
-        if (paymentDetails) {
-            paymentDetails.innerHTML = `
-                <div class="mpesa-instructions">
-                    <div class="instruction-step">
-                        <i class="fas fa-mobile-alt"></i>
-                        <div class="step-content">
-                            <h4>M-Pesa Payment Instructions</h4>
-                            <p>When you click "Donate Now", you'll receive an M-Pesa prompt on your phone.</p>
-                        </div>
-                    </div>
-                    <div class="instruction-step">
-                        <i class="fas fa-shield-alt"></i>
-                        <div class="step-content">
-                            <h4>Secure Payment</h4>
-                            <p>Your payment is processed securely through M-Pesa's official API.</p>
-                        </div>
-                    </div>
-                    <div class="mpesa-info">
-                        <p><strong>Paybill:</strong> ${this.companyMpesaNumber}</p>
-                        <p><strong>Account:</strong> HungerKenya</p>
-                    </div>
-                </div>
-            `;
         }
     }
 
@@ -102,8 +60,8 @@ class MpesaIntegration {
         });
         event.target.classList.add('selected');
 
-        // Update summary
-        this.updateDonationSummary();
+        // Update impact preview
+        this.updateImpactPreview();
     }
 
     handleCustomAmountChange(event) {
@@ -114,63 +72,65 @@ class MpesaIntegration {
             btn.classList.remove('selected');
         });
 
-        // Update summary
-        this.updateDonationSummary();
+        // Update impact preview
+        this.updateImpactPreview();
     }
 
-    updateDonationSummary() {
-        const customAmountInput = document.getElementById('custom-amount');
-        const summaryAmount = document.getElementById('summary-amount');
-        const summaryTotal = document.getElementById('summary-total');
-
-        if (customAmountInput && summaryAmount && summaryTotal) {
-            const amount = customAmountInput.value || '50';
-            const formattedAmount = `KSh ${parseFloat(amount).toFixed(2)}`;
+    updateImpactPreview() {
+        const amount = parseFloat(document.getElementById('custom-amount').value) || 0;
+        const impactText = document.getElementById('impact-text');
+        
+        if (impactText) {
+            let impactMessage = '';
             
-            summaryAmount.textContent = formattedAmount;
-            summaryTotal.textContent = formattedAmount;
+            if (amount >= 1000) {
+                impactMessage = 'Your donation will support a community farming program';
+            } else if (amount >= 250) {
+                impactMessage = 'Your donation will provide seeds and tools for farmers';
+            } else if (amount >= 100) {
+                impactMessage = 'Your donation will provide school meals for 5 children';
+            } else if (amount >= 50) {
+                impactMessage = 'Your donation will feed a family for one day';
+            } else if (amount >= 10) {
+                impactMessage = 'Your donation will provide a meal for a child';
+            } else {
+                impactMessage = 'Your donation will provide meals for families in need';
+            }
+            
+            impactText.textContent = impactMessage;
         }
     }
 
     async handleDonationSubmit(event) {
         event.preventDefault();
 
-        const formData = new FormData(event.target);
-        const paymentMethod = formData.get('payment');
-
-        if (paymentMethod === 'mpesa') {
-            await this.processMpesaDonation(formData);
-        } else {
-            // Handle other payment methods
-            this.processOtherDonation(formData);
-        }
-    }
-
-    async processMpesaDonation(formData) {
         try {
-            // Validate minimum amount
-            const amount = parseFloat(formData.get('custom-amount') || '0');
-            if (amount < 10) {
+            // Get form data
+            const amount = parseFloat(document.getElementById('custom-amount').value);
+            const frequency = document.querySelector('input[name="frequency"]:checked').value;
+
+            // Validate amount
+            if (!amount || amount < 10) {
                 this.showError('Minimum donation amount is KSh 10');
                 return;
             }
 
             // Show loading state
-            this.showLoading('Initiating M-Pesa payment...');
+            this.showLoading('Preparing M-Pesa payment...');
 
-            // Prepare donation data
+            // For simplified donations, we'll collect phone number during M-Pesa flow
             const donationData = {
                 amount: amount,
                 currency: 'KES',
-                donorName: `${formData.get('firstName')} ${formData.get('lastName')}`,
-                donorEmail: formData.get('email'),
-                phoneNumber: formData.get('phone'),
+                donorName: 'Anonymous Donor', // Will be updated if user provides later
+                donorEmail: 'anonymous@hungerinkenya.org', // Placeholder
+                phoneNumber: '254000000000', // Will be provided by M-Pesa
                 paymentMethod: 'mpesa',
-                program: formData.get('designation'),
-                isRecurring: formData.get('frequency') !== 'one-time',
-                recurringInterval: formData.get('frequency'),
-                isAnonymous: formData.get('anonymous') === 'on',
-                message: formData.get('message') || ''
+                program: 'general',
+                isRecurring: frequency === 'monthly',
+                recurringInterval: frequency,
+                isAnonymous: true,
+                message: `Simplified donation via website - ${frequency} donation`
             };
 
             // Initiate M-Pesa STK Push
@@ -185,7 +145,7 @@ class MpesaIntegration {
             const result = await response.json();
 
             if (result.success) {
-                this.showMpesaPrompt(result.checkoutRequestID);
+                this.showMpesaPrompt(result.checkoutRequestID, amount);
                 this.trackDonationAttempt(donationData);
             } else {
                 throw new Error(result.message || 'M-Pesa initialization failed');
@@ -199,7 +159,7 @@ class MpesaIntegration {
         }
     }
 
-    showMpesaPrompt(checkoutRequestID) {
+    showMpesaPrompt(checkoutRequestID, amount) {
         // Show success message with M-Pesa instructions
         const modal = document.createElement('div');
         modal.className = 'mpesa-modal';
@@ -210,7 +170,7 @@ class MpesaIntegration {
                     <h3>Check Your Phone</h3>
                 </div>
                 <div class="modal-body">
-                    <p>We've sent an M-Pesa prompt to your phone.</p>
+                    <p>We've sent an M-Pesa prompt to your phone for <strong>KSh ${amount}</strong>.</p>
                     <p>Please check your phone and complete the payment:</p>
                     <div class="mpesa-details">
                         <p><strong>Paybill:</strong> ${this.companyMpesaNumber}</p>
@@ -281,16 +241,17 @@ class MpesaIntegration {
             modal.querySelector('.modal-body').innerHTML = `
                 <div class="success-message">
                     <i class="fas fa-check-circle"></i>
-                    <h3>Payment Successful!</h3>
-                    <p>Thank you for your donation. Your contribution will make a real difference.</p>
+                    <h3>Thank You!</h3>
+                    <p>Your donation has been received successfully.</p>
+                    <p>Your contribution will help feed families affected by Kenya's hunger crisis.</p>
                     <div class="transaction-details">
                         <p><strong>Transaction ID:</strong> ${transactionID}</p>
-                        <p>You will receive a confirmation email shortly.</p>
+                        <p>You will receive a confirmation SMS shortly.</p>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" onclick="location.reload()">
-                        Continue
+                        Donate Again
                     </button>
                 </div>
             `;
@@ -405,12 +366,6 @@ class MpesaIntegration {
             }
         }));
     }
-
-    processOtherDonation(formData) {
-        // Handle other payment methods (PayPal, Card, etc.)
-        // This would integrate with respective APIs
-        console.log('Processing other payment method:', formData.get('payment'));
-    }
 }
 
 // Initialize M-Pesa integration when DOM is loaded
@@ -418,6 +373,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Only initialize on donation page
     if (document.getElementById('donation-form')) {
         window.mpesaIntegration = new MpesaIntegration();
+        
+        // Set default amount
+        const defaultAmount = document.querySelector('.amount-btn[data-amount="50"]');
+        if (defaultAmount) {
+            defaultAmount.click();
+        }
     }
 });
 
