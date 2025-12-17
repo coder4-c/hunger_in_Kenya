@@ -299,5 +299,18 @@
     <script src="../js/main.js"></script>
     <script src="../js/navigation.js"></script>
     <script src="../js/mpesa-integration.js"></script>
+    <script>
+        // Add visual enhancements to donation page with specific exclusions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize minimal visual enhancements for donation page
+            const style = document.createElement('style');
+            style.textContent = `
+                .floating-donate-btn { display: none !important; }
+                .scroll-progress { display: none !important; }
+                .floating-elements { display: none !important; }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>
