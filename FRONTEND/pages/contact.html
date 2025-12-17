@@ -161,48 +161,37 @@
         <!-- Contact Form -->
         <section class="contact-form-section">
             <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+                    <h2>Send Us A Message</h2>
+                    <p>Get in touch with our team. We're here to answer your questions and connect you with opportunities to make a difference.</p>
+                </div>
+
                 <div class="form-layout">
-                    <div class="contact-form-container">
-                        <div class="form-header">
-                            <h2>Send Us a Message</h2>
-                            <p>Fill out the form below and we'll get back to you as soon as possible</p>
-                        </div>
-                        
-                        <form class="contact-form" id="contact-form">
-                            <div class="form-section">
-                                <h3>Your Information</h3>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="first-name">First Name *</label>
-                                        <input type="text" id="first-name" name="firstName" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="last-name">Last Name *</label>
-                                        <input type="text" id="last-name" name="lastName" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="email">Email Address *</label>
-                                        <input type="email" id="email" name="email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone">Phone Number</label>
-                                        <input type="tel" id="phone" name="phone">
-                                    </div>
-                                </div>
-                                
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form modern-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="first-name">First Name <span class="required">*</span></label>
+                                <input type="text" id="first-name" name="firstName" placeholder="Your First Name" required>
+                            </div>
+                            
+                            <div class="form-row">
                                 <div class="form-group">
-                                    <label for="location">Location (City, Country)</label>
-                                    <input type="text" id="location" name="location" placeholder="e.g., New York, USA or London, UK">
+                                    <label for="last-name">Last Name <span class="required">*</span></label>
+                                    <input type="text" id="last-name" name="lastName" placeholder="Your Last Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" placeholder="Your Email Address" required>
                                 </div>
                             </div>
                             
-                            <div class="form-section">
-                                <h3>Your Message</h3>
+                            <div class="form-row">
                                 <div class="form-group">
-                                    <label for="subject">Subject *</label>
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject <span class="required">*</span></label>
                                     <select id="subject" name="subject" required>
                                         <option value="">Select a subject</option>
                                         <option value="general-inquiry">General Inquiry</option>
@@ -210,128 +199,116 @@
                                         <option value="donations">Donation Questions</option>
                                         <option value="partnerships">Partnerships</option>
                                         <option value="media-press">Media & Press</option>
-                                        <option value="technical-support">Technical Support</option>
                                         <option value="feedback">Feedback & Suggestions</option>
-                                        <option value="other">Other</option>
                                     </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="message">Message *</label>
-                                    <textarea id="message" name="message" rows="6" placeholder="Please provide details about your inquiry..." required></textarea>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="newsletter">
-                                        <span class="checkmark"></span>
-                                        I'd like to receive updates about your programs and impact stories
-                                    </label>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="privacy" required>
-                                        <span class="checkmark"></span>
-                                        I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> *
-                                    </label>
                                 </div>
                             </div>
                             
-                            <button type="submit" class="btn btn-primary btn-large">
+                            <div class="form-group">
+                                <label for="message">Message <span class="required">*</span></label>
+                                <textarea id="message" name="message" rows="7" placeholder="Please provide details about your inquiry..."></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    I'd like to receive updates about our programs and impact
+                                </label>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="privacy" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" target="_blank">Privacy Policy</a> <span class="required">*</span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-large form-submit-btn">
                                 <i class="fas fa-paper-plane"></i>
                                 Send Message
                             </button>
                         </form>
                     </div>
                     
-                    <div class="contact-sidebar">
-                        <div class="quick-contacts">
-                            <h3>Quick Contacts</h3>
-                            <div class="quick-contact">
-                                <div class="contact-icon">
+                    <div class="contact-info-wrapper">
+                        <div class="contact-info-box">
+                            <div class="info-box-header">
+                                <h3>Contact Info</h3>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Phone</h4>
+                                    <a href="tel:+254700123456">+254 700 123 456</a>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Address</h4>
+                                    <span>Hunger in Kenya Initiative<br>Kimathi Street, Suite 305<br>Nairobi, Kenya</span>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Email</h4>
+                                    <a href="mailto:info@hungerinkenya.org">info@hungerinkenya.org</a>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Hours</h4>
+                                    <span>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-links-box">
+                            <h3>Quick Links</h3>
+                            <div class="quick-link-item">
+                                <div class="link-icon">
                                     <i class="fas fa-heart"></i>
                                 </div>
-                                <div class="contact-info">
+                                <div class="link-content">
                                     <h4>Donations</h4>
-                                    <p>Questions about making a donation or setting up recurring gifts</p>
                                     <a href="mailto:donations@hungerinkenya.org">donations@hungerinkenya.org</a>
                                 </div>
                             </div>
                             
-                            <div class="quick-contact">
-                                <div class="contact-icon">
+                            <div class="quick-link-item">
+                                <div class="link-icon">
                                     <i class="fas fa-users"></i>
                                 </div>
-                                <div class="contact-info">
+                                <div class="link-content">
                                     <h4>Volunteering</h4>
-                                    <p>Ready to volunteer? Get information about opportunities and application process</p>
                                     <a href="mailto:volunteers@hungerinkenya.org">volunteers@hungerinkenya.org</a>
                                 </div>
                             </div>
                             
-                            <div class="quick-contact">
-                                <div class="contact-icon">
+                            <div class="quick-link-item">
+                                <div class="link-icon">
                                     <i class="fas fa-handshake"></i>
                                 </div>
-                                <div class="contact-info">
+                                <div class="link-content">
                                     <h4>Partnerships</h4>
-                                    <p>Corporate partnerships, institutional collaborations, and strategic alliances</p>
                                     <a href="mailto:partnerships@hungerinkenya.org">partnerships@hungerinkenya.org</a>
                                 </div>
-                            </div>
-                            
-                            <div class="quick-contact">
-                                <div class="contact-icon">
-                                    <i class="fas fa-newspaper"></i>
-                                </div>
-                                <div class="contact-info">
-                                    <h4>Media & Press</h4>
-                                    <p>Media inquiries, press releases, and interview requests</p>
-                                    <a href="mailto:media@hungerinkenya.org">media@hungerinkenya.org</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="office-hours">
-                            <h3>Office Hours</h3>
-                            <div class="hours-list">
-                                <div class="hours-item">
-                                    <span class="day">Monday - Friday</span>
-                                    <span class="time">8:00 AM - 6:00 PM</span>
-                                </div>
-                                <div class="hours-item">
-                                    <span class="day">Saturday</span>
-                                    <span class="time">9:00 AM - 2:00 PM</span>
-                                </div>
-                                <div class="hours-item">
-                                    <span class="day">Sunday</span>
-                                    <span class="time">Closed</span>
-                                </div>
-                                <div class="hours-item emergency">
-                                    <span class="day">Emergency Line</span>
-                                    <span class="time">24/7 Available</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="response-time">
-                            <h3>Response Times</h3>
-                            <div class="response-item">
-                                <span class="response-type">General Inquiries</span>
-                                <span class="response-time">Within 24 hours</span>
-                            </div>
-                            <div class="response-item">
-                                <span class="response-type">Urgent Matters</span>
-                                <span class="response-time">Within 4 hours</span>
-                            </div>
-                            <div class="response-item">
-                                <span class="response-type">Donation Questions</span>
-                                <span class="response-time">Within 12 hours</span>
-                            </div>
-                            <div class="response-item">
-                                <span class="response-type">Volunteer Applications</span>
-                                <span class="response-time">Within 48 hours</span>
                             </div>
                         </div>
                     </div>
